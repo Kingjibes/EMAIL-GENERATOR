@@ -1,5 +1,5 @@
 import React from 'react';
-    import { Routes, Route } from 'react-router-dom';
+    import { Routes, Route, Navigate } from 'react-router-dom';
     import { Toaster } from '@/components/ui/toaster';
     import EmailGeneratorPage from '@/pages/EmailGeneratorPage';
 
@@ -8,6 +8,7 @@ import React from 'react';
         <>
           <Routes>
             <Route path="/" element={<EmailGeneratorPage />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
           <Toaster />
         </>
