@@ -1,10 +1,20 @@
+# Render Blueprint for CipherTech Email Generator
+
 services:
   - type: web
     name: ciphertech-email-generator
-    env: node
+    runtime: node
     buildCommand: npm install && npm run build
     startCommand: npm run start
+    env: node
+    nodeVersion: 18  # Matches your engines specification
+    autoDeploy: true
     envVars:
-      - key: PORT
-        value: 3000
-    staticSite: false
+      - key: NODE_ENV
+        value: production
+    # If you need any environment variables for Supabase or other services,
+    # add them here. For example:
+    # - key: VITE_SUPABASE_URL
+    #   value: your-supabase-url
+    # - key: VITE_SUPABASE_KEY
+    #   value: your-supabase-key
