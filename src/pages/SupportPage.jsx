@@ -95,7 +95,7 @@ const SupportPage = () => {
                 <Button variant="outline" className="border-green-500 text-green-400 hover:bg-green-500 hover:text-white w-full" onClick={() => window.open('https://wa.me/+233557488116')}>
                   Chat on WhatsApp
                 </Button>
-                <p className="text-xs text-gray-500 mt-2">()</p>
+                <p className="text-xs text-gray-500 mt-2"></p>
               </CardContent>
             </Card>
           </motion.div>
@@ -110,7 +110,7 @@ const SupportPage = () => {
                 <Button variant="outline" className="border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white w-full" onClick={() => window.open('https://t.me/HACK_ERPRO')}>
                   Message on Telegram
                 </Button>
-                 <p className="text-xs text-gray-500 mt-2">()</p>
+                 <p className="text-xs text-gray-500 mt-2"></p>
               </CardContent>
             </Card>
           </motion.div>
