@@ -109,14 +109,14 @@ const ContactPage = () => {
             <CardContent className="space-y-6">
               <div>
                 <h3 className="text-xl font-semibold text-cyan-300 mb-2">WhatsApp</h3>
-                <Button variant="outline" className="w-full border-cyan-500 text-cyan-400 hover:bg-cyan-500 hover:text-white" onClick={() => window.open('https://wa.me/YOUR_WHATSAPP_NUMBER', '_blank')}>
+                <Button variant="outline" className="w-full border-cyan-500 text-cyan-400 hover:bg-cyan-500 hover:text-white" onClick={() => window.open('https://wa.me/+233557488116')}>
                   <Phone className="mr-2 h-5 w-5" /> Chat on WhatsApp
                 </Button>
-                <p className="text-xs text-gray-500 mt-1 text-center">(Replace with your WhatsApp number)</p>
+                <p className="text-xs text-gray-500 mt-1 text-center">()</p>
               </div>
               <div>
                 <h3 className="text-xl font-semibold text-cyan-300 mb-2">Telegram</h3>
-                <Button variant="outline" className="w-full border-cyan-500 text-cyan-400 hover:bg-cyan-500 hover:text-white" onClick={() => window.open('https://t.me/YOUR_TELEGRAM_USERNAME', '_blank')}>
+                <Button variant="outline" className="w-full border-cyan-500 text-cyan-400 hover:bg-cyan-500 hover:text-white" onClick={() => window.open('https://t.me/HACK_ERPRO')}>
                   <Send className="mr-2 h-5 w-5" /> Message on Telegram
                 </Button>
                 <p className="text-xs text-gray-500 mt-1 text-center">(Replace with your Telegram username)</p>
