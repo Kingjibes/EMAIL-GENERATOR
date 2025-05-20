@@ -92,10 +92,10 @@ const SupportPage = () => {
                 <CardDescription className="text-gray-400">For quick chats & support</CardDescription>
               </CardHeader>
               <CardContent className="text-center">
-                <Button variant="outline" className="border-green-500 text-green-400 hover:bg-green-500 hover:text-white w-full" onClick={() => window.open('https://wa.me/YOUR_WHATSAPP_NUMBER', '_blank')}>
+                <Button variant="outline" className="border-green-500 text-green-400 hover:bg-green-500 hover:text-white w-full" onClick={() => window.open('https://wa.me/+233557488116')}>
                   Chat on WhatsApp
                 </Button>
-                <p className="text-xs text-gray-500 mt-2">(Replace YOUR_WHATSAPP_NUMBER with your actual number)</p>
+                <p className="text-xs text-gray-500 mt-2">()</p>
               </CardContent>
             </Card>
           </motion.div>
@@ -107,10 +107,10 @@ const SupportPage = () => {
                 <CardDescription className="text-gray-400">Connect with us on Telegram</CardDescription>
               </CardHeader>
               <CardContent className="text-center">
-                <Button variant="outline" className="border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white w-full" onClick={() => window.open('https://t.me/YOUR_TELEGRAM_USERNAME', '_blank')}>
+                <Button variant="outline" className="border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white w-full" onClick={() => window.open('https://t.me/HACK_ERPRO')}>
                   Message on Telegram
                 </Button>
-                 <p className="text-xs text-gray-500 mt-2">(Replace YOUR_TELEGRAM_USERNAME with your actual username)</p>
+                 <p className="text-xs text-gray-500 mt-2">()</p>
               </CardContent>
             </Card>
           </motion.div>
