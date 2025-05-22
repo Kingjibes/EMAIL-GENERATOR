@@ -1,6 +1,7 @@
 import React from 'react';
     import { motion } from 'framer-motion';
     import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+    import { AlertTriangle } from 'lucide-react';
 
     const HowToUseSection = () => {
       return (
@@ -38,6 +39,31 @@ import React from 'react';
                 <p className="text-sm">
                     This tool utilizes Gmail's features that allow for variations in email addresses (using "+" and "." symbols). While these are standard Gmail functionalities, Gmail's policies can change. This tool generates valid alias formats, but continuous, error-free operation depends on Gmail maintaining these features. We are not responsible for any changes in Gmail's service that may affect the functionality of these generated aliases.
                 </p>
+              </div>
+
+              <div className="mt-6 p-4 bg-orange-900/40 border border-orange-700/60 rounded-lg shadow-md">
+                <div className="flex items-start">
+                  <AlertTriangle className="h-6 w-6 mr-3 text-orange-400 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-bold text-orange-300 text-lg mb-1">Very Important Notice: Using Generated Emails with Render</h4>
+                    <p className="text-orange-200 text-sm">
+                      When using a generated email to create or register an account on <strong className="text-orange-100">Render.com</strong>:
+                    </p>
+                    <ul className="list-disc list-inside space-y-1 mt-2 text-orange-200 pl-2">
+                      <li>If Render does not immediately prompt you to verify your email, or if you encounter issues with verification:</li>
+                      <li className="ml-4">
+                        <strong className="text-orange-100">Refresh the page</strong> on Render.com and try the verification process again.
+                      </li>
+                      <li className="ml-4">
+                        You may need to <strong className="text-orange-100">repeat this process</strong> (refresh and retry) a few times.
+                      </li>
+                      <li>Persistence is key! The verification should eventually work.</li>
+                    </ul>
+                    <p className="text-xs text-orange-300/70 mt-2">
+                      This specific behavior is related to how Render might handle email verification processes for aliased emails.
+                    </p>
+                  </div>
+                </div>
               </div>
             </CardContent>
           </Card>
