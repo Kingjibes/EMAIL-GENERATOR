@@ -13,11 +13,12 @@ import React, { useState, useRef } from 'react';
       const [email, setEmail] = useState('');
       const [generatedEmails, setGeneratedEmails] = useState([]);
       const [isLoading, setIsLoading] = useState(false);
+      const [isDownloading, setIsDownloading] = useState(false);
       const { toast } = useToast();
       const generatedEmailsRef = useRef(null);
 
       const isValidGmail = (email) => {
-        return /^[a-zA-Z0-9.]+@gmail\.com$/.test(email);
+        return /^[a-zA-Z0-9._+-]+@gmail\.com$/.test(email);
       };
 
       const handleGenerateEmails = async () => {
@@ -80,7 +81,11 @@ import React, { useState, useRef } from 'react';
         }, 1500);
       };
 
-      const downloadEmails = () => {
+      const formatCounter = (count) => {
+        return count.toString().padStart(3, '0');
+      };
+
+      const downloadEmails = async () => {
         if (generatedEmails.length === 0) {
           toast({
             title: 'No Emails to Download',
@@ -89,18 +94,44 @@ import React, { useState, useRef } from 'react';
           });
           return;
         }
-        const fileContent = generatedEmails.join('\n');
-        const blob = new Blob([fileContent], { type: 'text/plain;charset=utf-8' });
-        const link = document.createElement('a');
-        link.href = URL.createObjectURL(blob);
-        link.download = 'ciphertech_generated_emails.txt';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        toast({
-          title: 'Download Started',
-          description: 'Your email list is being downloaded.',
-        });
+        setIsDownloading(true);
+        try {
+          const { data: counterResponse, error: counterError } = await supabase.functions.invoke('get_and_increment_download_counter');
+
+          if (counterError) {
+            throw new Error(counterError.message);
+          }
+
+          if (!counterResponse || typeof counterResponse.new_counter_value === 'undefined') {
+             throw new Error('Invalid counter response from server.');
+          }
+          
+          const counterValue = counterResponse.new_counter_value;
+          const fileName = `cipher_email${formatCounter(counterValue)}.txt`;
+          
+          const fileContent = generatedEmails.join('\n');
+          const blob = new Blob([fileContent], { type: 'text/plain;charset=utf-8;' });
+          const link = document.createElement('a');
+          link.href = URL.createObjectURL(blob);
+          link.download = fileName;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          toast({
+            title: 'Download Started',
+            description: `Your email list is being downloaded as ${fileName}.`,
+          });
+
+        } catch (error) {
+          console.error('Error during download process:', error);
+          toast({
+            title: 'Download Failed',
+            description: error.message || 'Could not get download counter or create file.',
+            variant: 'destructive',
+          });
+        } finally {
+          setIsDownloading(false);
+        }
       };
 
       const copyToClipboard = (text) => {
@@ -135,6 +166,7 @@ import React, { useState, useRef } from 'react';
               generatedEmails={generatedEmails}
               onDownload={downloadEmails}
               onCopy={copyToClipboard}
+              isDownloading={isDownloading}
             />
           )}
 
