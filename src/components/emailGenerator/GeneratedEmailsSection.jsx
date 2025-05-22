@@ -3,9 +3,9 @@ import React from 'react';
     import { Button } from '@/components/ui/button';
     import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
     import { ScrollArea } from '@/components/ui/scroll-area';
-    import { Download, Copy } from 'lucide-react';
+    import { Download, Copy, Loader2 } from 'lucide-react';
 
-    const GeneratedEmailsSection = React.forwardRef(({ generatedEmails, onDownload, onCopy }, ref) => {
+    const GeneratedEmailsSection = React.forwardRef(({ generatedEmails, onDownload, onCopy, isDownloading }, ref) => {
       return (
         <motion.div
           ref={ref}
@@ -49,9 +49,15 @@ import React from 'react';
             <CardFooter>
               <Button
                 onClick={onDownload}
-                className="w-full h-12 text-lg font-semibold bg-gradient-to-r from-pink-600 to-red-600 hover:from-pink-700 hover:to-red-700 text-white transition-all duration-300 ease-in-out transform hover:scale-105"
+                disabled={isDownloading}
+                className="w-full h-12 text-lg font-semibold bg-gradient-to-r from-pink-600 to-red-600 hover:from-pink-700 hover:to-red-700 text-white transition-all duration-300 ease-in-out transform hover:scale-105 disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                <Download className="mr-2 h-5 w-5" /> Download List
+                {isDownloading ? (
+                  <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                ) : (
+                  <Download className="mr-2 h-5 w-5" />
+                )}
+                {isDownloading ? 'Preparing Download...' : 'Download List'}
               </Button>
             </CardFooter>
           </Card>
