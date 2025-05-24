@@ -21,7 +21,7 @@ import React from 'react';
                 <ol className="list-decimal list-inside space-y-1 pl-2">
                   <li>Enter your primary Gmail address (e.g., <code className="bg-slate-700/50 px-1 rounded text-pink-300">yourname@gmail.com</code>) in the input field.</li>
                   <li>Click the "Generate Emails" button.</li>
-                  <li>A list of 100+ email variations will be generated.</li>
+                  <li>A list of 200+ email variations will be generated.</li>
                   <li>These generated emails are aliases of your primary Gmail. Any email sent to these variations will arrive in your main Gmail inbox.</li>
                   <li>Use these variations for different services (newsletters, sign-ups, etc.) to organize your inbox and track sources.</li>
                 </ol>
