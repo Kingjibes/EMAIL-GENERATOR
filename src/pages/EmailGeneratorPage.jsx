@@ -69,11 +69,11 @@ import React, { useState, useRef } from 'react';
         const variations = generateEmailVariations(email);
         
         setTimeout(() => {
-          setGeneratedEmails(Array.from(variations).slice(0,105));
+          setGeneratedEmails(Array.from(variations).slice(0,205));
           setIsLoading(false);
           toast({
             title: 'Emails Generated!',
-            description: `${variations.size > 100 ? '100+' : variations.size} email variations have been created.`,
+            description: `${variations.size > 200 ? '200+' : variations.size} email variations have been created.`,
           });
           if (generatedEmailsRef.current) {
             generatedEmailsRef.current.scrollIntoView({ behavior: 'smooth' });
