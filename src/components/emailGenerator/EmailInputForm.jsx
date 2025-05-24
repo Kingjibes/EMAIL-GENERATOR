@@ -20,7 +20,7 @@ import React from 'react';
               </div>
               <CardTitle className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-pink-400">Generate Your Email Variations</CardTitle>
               <CardDescription className="text-purple-200 mt-2">
-                Enter your primary Gmail address to generate 100+ variations.
+                Enter your primary Gmail address to generate 200+ variations.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
