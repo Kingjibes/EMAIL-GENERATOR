@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
     import { motion } from 'framer-motion';
     import { supabase } from '@/lib/supabaseClient';
@@ -28,13 +27,14 @@ import React, { useEffect, useState } from 'react';
                 acc[item.pack_name] = { 
                   name: item.pack_name, 
                   suggestions: [], 
-                  icon: item.icon || 'Package', // Use first item's icon or default
+                  icon: item.icon || 'Package', 
                   iconSet: !!item.icon 
                 };
               }
-              acc[item.pack_name].suggestions.push({ fragment: item.alias_fragment, description: item.description });
+              // Ensure fragment is clean (no leading/trailing dots or pluses)
+              const cleanFragment = item.alias_fragment.replace(/^\+/, '').replace(/^\./, '').replace(/\.$/, '');
+              acc[item.pack_name].suggestions.push({ fragment: cleanFragment, description: item.description });
               
-              // Prioritize an explicitly set icon for the pack
               if (item.icon && !acc[item.pack_name].iconSet) {
                 acc[item.pack_name].icon = item.icon;
                 acc[item.pack_name].iconSet = true;
