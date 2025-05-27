@@ -16,18 +16,23 @@ import React, { useEffect, useState } from 'react';
             .from('alias_usage_stats')
             .select('alias_fragment, usage_count')
             .order('usage_count', { ascending: false })
-            .limit(10); // Fetch top 10
+            .limit(10); 
 
           if (error) {
             console.error('Error fetching popular alias suggestions:', error);
             setSuggestions([]);
           } else {
-            setSuggestions(data);
+            // Ensure fragments are clean for display and usage
+            const cleanedData = data.map(item => ({
+                ...item,
+                alias_fragment: item.alias_fragment.replace(/^\+/, '').replace(/^\./, '').replace(/\.$/, '')
+            }));
+            setSuggestions(cleanedData);
           }
           setLoading(false);
         };
         fetchSuggestions();
-      }, [propKey]); // Re-fetch when key changes
+      }, [propKey]);
 
       if (loading) {
         return (
